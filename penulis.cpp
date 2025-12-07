@@ -78,7 +78,7 @@ void findAuthorsByBook_103012400343(ListPenulis L, string idBuku) {
     cout << "--- Penulis Buku dengan ID " << idBuku << " ---" << endl;
 
     while (P != nullptr) {
-        if (findBukuInPenulis_103012400343(P, idBuku) != NULL) {
+        if (findBukuInPenulis_103012400343(P, idBuku) != nullptr) {
             cout << "ID: " << P->info.id << ", Nama: " << P->info.nama << endl;
             found = true;
         }
