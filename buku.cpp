@@ -84,6 +84,6 @@ void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku) {
     } else if (P != nullptr) {
         cout << "Buku dengan ID " << idBuku << " tidak ditemukan pada penulis ID " << P->info.id << "." << endl;
     } else {
-        cout << "Error: Penulis tidak valid (nullptr)." << endl;
+        cout << "Error: Penulis tidak valid." << endl;
     }
 }
