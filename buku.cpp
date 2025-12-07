@@ -23,7 +23,7 @@ void insertLastBuku_103012400343(adrPenulis P, adrBuku B) {
     } else {
         adrBuku Q;
         Q = P->firstBuku;
-        while (Q->next != NULL) {
+        while (Q->next != nullptr) {
             Q = Q->next;
         }
         Q->next = B;
