@@ -1,8 +1,6 @@
 #ifndef PENULIS_H_INCLUDED
 #define PENULIS_H_INCLUDED
 
-#include <iostream>
-
 #include "buku.h"
 
 using namespace std;
@@ -38,5 +36,9 @@ void editPenulis_103012400343(adrPenulis P, string idBaru, string namaBaru);
 void editBuku_103012400343(adrBuku B, string idBaru, string judulBaru);
 void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku);
 void deletePenulis_103012400343(ListPenulis &L, string idPenulis);
+int countBooksByPenulis_103012400343(adrPenulis P);
+int countAuthorsByBook_103012400343(ListPenulis L, string idBuku);
+int countBooksWithoutAuthor_103012400343(ListPenulis L);
+
 
 #endif

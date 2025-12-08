@@ -19,4 +19,4 @@ typedef elemenBuku* adrBuku;
 
 adrBuku createElemenBuku_103012400343(string id, string judul);
 
-#endif // BUKU_H_INCLUDED
+#endif
