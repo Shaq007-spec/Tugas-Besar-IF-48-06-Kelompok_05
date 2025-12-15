@@ -182,7 +182,7 @@ void deleteLastPenulis(ListPenulis &L) {
     if (L.first == nullptr) {
         cout << "Error: List Penulis kosong." << endl;
     }
-    if (L.first->next == nullptr) { // Hanya 1 elemen
+    if (L.first->next == nullptr) {
         deleteFirstPenulis_103012400343(L);
     }
 
