@@ -49,5 +49,15 @@ void editPenulis_103012400343(adrPenulis P, string idBaru, string namaBaru);
 void editBuku_103012400343(adrBuku B, string idBaru, string judulBaru);
 void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku);
 void deletePenulis_103012400343(ListPenulis &L, string idPenulis);
+void insertFirstPenulis(ListPenulis &L, adrPenulis P);
+void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec);
+void deleteFirstPenulis(ListPenulis &L);
+void deleteAfterPenulis(ListPenulis &L, string idPrec);
+void deleteLastPenulis(ListPenulis &L);
+void insertFirstBuku(adrPenulis P, adrBuku B);
+void insertAfterBuku(adrPenulis P, adrBuku B, string idBukuPrec);
+void deleteFirstBuku(adrPenulis P);
+void deleteAfterBuku(adrPenulis P, string idBukuPrec);
+void deleteLastBuku(adrPenulis P);
 
 #endif // HEADER_H_INCLUDED

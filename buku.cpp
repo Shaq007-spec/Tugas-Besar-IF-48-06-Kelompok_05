@@ -13,6 +13,42 @@ adrBuku createElemenBuku_103012400343(string id, string judul) {
     return P;
 }
 
+void insertFirstBuku(adrPenulis P, adrBuku B) {
+    if (P == nullptr) {
+        cout << "Error: Penulis tidak valid." << endl;
+    }
+
+    if (P->firstBuku == nullptr) {
+        P->firstBuku = B;
+    } else {
+        B->next = P->firstBuku;
+        P->firstBuku->prev = B;
+        P->firstBuku = B;
+    }
+}
+
+void insertAfterBuku(adrPenulis P, adrBuku B, string idBukuPrec) {
+    if (P == nullptr) {
+        cout << "Error: Penulis tidak valid." << endl;
+    }
+
+    adrBuku prec = findBukuInPenulis_103012400343(P, idBukuPrec);
+
+    if (prec != nullptr) {
+        if (prec->next == nullptr) {
+            prec->next = B;
+            B->prev = prec;
+        } else {
+            B->next = prec->next;
+            B->prev = prec;
+            prec->next->prev = B;
+            prec->next = B;
+        }
+    } else {
+        cout << "Error: Preceding Buku dengan ID " << idBukuPrec << " tidak ditemukan pada Penulis " << P->info.nama << endl;
+    }
+}
+
 void insertLastBuku_103012400343(adrPenulis P, adrBuku B) {
     if (P == nullptr) {
         cout << "Error: Penulis tidak valid." << endl;
@@ -51,6 +87,71 @@ void editBuku_103012400343(adrBuku B, string idBaru, string judulBaru) {
     } else {
         cout << "Buku tidak ditemukan." << endl;
     }
+}
+
+void deleteFirstBuku(adrPenulis P) {
+    if (P == nullptr) {
+        cout << "Error: Penulis tidak valid." << endl;
+    }
+    if (P->firstBuku == nullptr) {
+        cout << "Error: List Buku pada penulis " << P->info.nama << " kosong." << endl;
+    }
+
+    adrBuku B = P->firstBuku;
+    P->firstBuku = B->next;
+    if (P->firstBuku != nullptr) {
+        P->firstBuku->prev = nullptr;
+    }
+    B->next = nullptr;
+
+    cout << "Buku ID " << B->info.IDbuku << " (" << B->info.judul << ") berhasil dihapus dari " << P->info.nama << " (First)." << endl;
+}
+
+void deleteAfterBuku_103012400343(adrPenulis P, string idBukuPrec) {
+    if (P == nullptr) {
+        cout << "Error: Penulis tidak valid." << endl;
+        return;
+    }
+
+    adrBuku prec = findBukuInPenulis_103012400343(P, idBukuPrec);
+
+    if (prec == nullptr) {
+        cout << "Error: Preceding Buku dengan ID " << idBukuPrec << " tidak ditemukan pada Penulis " << P->info.nama << "." << endl;
+    }
+    if (prec->next == nullptr) {
+        cout << "Error: Tidak ada Buku setelah ID " << idBukuPrec << " pada Penulis " << P->info.nama << "." << endl;
+    }
+
+    adrBuku B = prec->next;
+    prec->next = B->next;
+    if (B->next != nullptr) {
+        B->next->prev = prec;
+    }
+    B->next = nullptr;
+    B->prev = nullptr;
+
+    cout << "Buku ID " << B->info.IDbuku << " (" << B->info.judul << ") berhasil dihapus dari " << P->info.nama << idBukuPrec << endl;
+}
+
+void deleteLastBuku_103012400343(adrPenulis P) {
+    if (P == nullptr) {
+        cout << "Error: Penulis tidak valid." << endl;
+    }
+    if (P->firstBuku == nullptr) {
+        cout << "Error: List Buku pada penulis " << P->info.nama << " kosong." << endl;
+    }
+    if (P->firstBuku->next == nullptr) {
+        deleteFirstBuku_103012400343(P);
+    }
+
+    adrBuku B = P->firstBuku;
+    while (B->next != nullptr) {
+        B = B->next;
+    }
+    B->prev->next = nullptr;
+    B->prev = nullptr;
+
+    cout << "Buku ID " << B->info.IDbuku << " (" << B->info.judul << ") berhasil dihapus dari " << P->info.nama << endl;
 }
 
 void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku) {
