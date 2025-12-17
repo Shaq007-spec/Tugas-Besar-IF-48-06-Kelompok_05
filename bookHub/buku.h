@@ -7,6 +7,9 @@ using namespace std;
 struct Buku {
     string id;
     string judul;
+    int tahunTerbit;
+    string deskirpsi;
+    string tipeBuku;
 };
 
 struct elemenBuku {
@@ -17,6 +20,6 @@ struct elemenBuku {
 
 typedef elemenBuku* adrBuku;
 
-adrBuku createElemenBuku_103012400343(string id, string judul);
+adrBuku createElemenBuku_103012400343(string id, string judul, int tahunTerbit , string deskripsi , string tipeBuku);
 
 #endif

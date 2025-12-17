@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="bookHub.cbp" />
 		<Unit filename="buku.cpp" />
 		<Unit filename="buku.h" />
 		<Unit filename="main.cpp" />

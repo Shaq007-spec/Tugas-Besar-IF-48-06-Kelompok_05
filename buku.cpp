@@ -188,3 +188,38 @@ void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku) {
         cout << "Error: Penulis tidak valid." << endl;
     }
 }
+
+void showAllBukuUnik_103012400343(ListPenulis L) {
+    if (L.first == nullptr) {
+        cout << "Tidak ada data penulis." << endl;
+        return;
+    }
+
+    cout << "=== DAFTAR SEMUA BUKU (UNIK) ===" << endl;
+
+    adrPenulis P = L.first;
+    while (P != nullptr) {
+        adrBuku B = P->firstBuku;
+        while (B != nullptr) {
+
+            bool sudahAda = false;
+
+            adrPenulis Q = L.first;
+            while (Q != P) {
+                if (findBukuInPenulis_103012400343(Q, B->info.IDbuku) != nullptr) {
+                    sudahAda = true;
+                }
+                Q = Q->next;
+            }
+
+            if (!sudahAda) {
+                cout << "ID Buku: " << B->info.IDbuku
+                     << ", Judul: " << B->info.judul << endl;
+            }
+
+            B = B->next;
+        }
+        P = P->next;
+    }
+}
+

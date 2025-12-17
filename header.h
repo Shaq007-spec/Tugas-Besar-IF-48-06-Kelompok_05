@@ -33,6 +33,7 @@ struct ListPenulis{
     adrPenulis first;
 };
 
+void showBukuUnik_103012400343(ListPenulis L);
 void createListPenulis_103012400343(ListPenulis &L);
 adrPenulis createElemenPenulis_103012400343(string id, string nama);
 bool isListPenulisEmpty_103012400343(ListPenulis L);
