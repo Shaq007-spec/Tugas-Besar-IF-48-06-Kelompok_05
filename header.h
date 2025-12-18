@@ -40,7 +40,11 @@ void createListPenulis_103012400343(ListPenulis &L);
 adrPenulis createElemenPenulis_103012400343(string id, string nama);
 bool isListPenulisEmpty_103012400343(ListPenulis L);
 adrBuku createElemenBuku_103012400343(string id, string judul, int tahunTerbit , string deskripsi , string tipeBuku);
+void insertFirstPenulis(ListPenulis &L, adrPenulis P);
+void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec);
 void insertLastPenulis_103012400343(ListPenulis &L, adrPenulis P);
+void insertFirstBuku(adrPenulis P, adrBuku B);
+void insertAfterBuku(adrPenulis P, adrBuku B, string idBukuPrec);
 void insertLastBuku_103012400343(adrPenulis P, adrBuku B);
 adrPenulis findPenulis_103012400343(ListPenulis L, string id);
 adrBuku findBukuInPenulis_103012400343(adrPenulis P, string idBuku);
@@ -50,19 +54,16 @@ void findAuthorsByBook_103012400343(ListPenulis L, string idBuku);
 void showBooksByOtherAuthors_103012400343(ListPenulis L, string excludeID);
 void editPenulis_103012400343(adrPenulis P, string idBaru, string namaBaru);
 void editBuku_103012400343(adrBuku B, string idBaru, string judulBaru);
-void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku);
-void deletePenulis_103012400343(ListPenulis &L, string idPenulis);
-int countBooksByPenulis_103012400343(adrPenulis P);
-int countAuthorsByBook_103012400343(ListPenulis L, string idBuku)
-void insertFirstPenulis(ListPenulis &L, adrPenulis P);
-void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec);
 void deleteFirstPenulis(ListPenulis &L);
 void deleteAfterPenulis(ListPenulis &L, string idPrec);
 void deleteLastPenulis(ListPenulis &L);
-void insertFirstBuku(adrPenulis P, adrBuku B);
-void insertAfterBuku(adrPenulis P, adrBuku B, string idBukuPrec);
+void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku);
+void deletePenulis_103012400343(ListPenulis &L, string idPenulis);
 void deleteFirstBuku(adrPenulis P);
 void deleteAfterBuku(adrPenulis P, string idBukuPrec);
 void deleteLastBuku(adrPenulis P);
+int countBooksByPenulis_103012400343(adrPenulis P);
+int countAuthorsByBook_103012400343(ListPenulis L, string idBuku);
 
 #endif // HEADER_H_INCLUDED
+

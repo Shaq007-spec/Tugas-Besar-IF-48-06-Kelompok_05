@@ -37,7 +37,7 @@ void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec) {
         P->next = prec->next;
         prec->next = P;
     } else {
-        cout << "Error: Preceding Penulis dengan ID " << idPrec << " tidak ditemukan." << endl;
+        cout << "Error: " << idPrec << " tidak ditemukan." << endl;
     }
 }
 
@@ -157,10 +157,10 @@ void deleteAfterPenulis(ListPenulis &L, string idPrec) {
     adrPenulis prec = findPenulis_103012400343(L, idPrec);
 
     if (prec == nullptr) {
-        cout << "Error: Preceding Penulis dengan ID " << idPrec << " tidak ditemukan." << endl;
+        cout << "Error: " << idPrec << " tidak ditemukan." << endl;
     }
     if (prec->next == nullptr) {
-        cout << "Error: Tidak ada Penulis setelah ID " << idPrec << "." << endl;
+        cout << "Error: " << idPrec << "." << endl;
     }
 
     adrPenulis P = prec->next;
@@ -259,7 +259,7 @@ int countAuthorsByBook_103012400343(ListPenulis L, string idBuku) {
         adrBuku B = P->firstBuku;
 
         while (B != nullptr) {
-            if (B->info.id == idBuku) {
+            if (B->info.IDbuku == idBuku) {
                 jumlah++;
             }
             B = B->next;

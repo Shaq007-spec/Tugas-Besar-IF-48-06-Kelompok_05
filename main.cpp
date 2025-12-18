@@ -38,6 +38,8 @@ void menuAdmin(ListPenulis &L){
     int pilihan = -1;
     string idPenulis, namaPenulis, idBuku, judulBuku;
     adrPenulis p;
+    int tahun;
+    string deskripsi, tipe;
     adrBuku q;
 
     while (pilihan != 0){
@@ -70,7 +72,7 @@ void menuAdmin(ListPenulis &L){
                 cin >> idBuku;
                 cout << "Masukan Judul Buku: ";
                 cin >> judulBuku;
-                 q= createElemenBuku_103012400343(idBuku, judulBuku);
+                q = createElemenBuku_103012400343(idBuku, judulBuku, tahun, deskripsi, tipe);
                 insertLastBuku_103012400343(p, q);
                 cout << "Buku berhasil ditambahkan." << endl;
             }else {
@@ -124,6 +126,8 @@ void menuUser(ListPenulis L){
         cout << "1. Lihat Semua Buku & Penulis" << endl;
         cout << "2. Cari Buku " << endl;
         cout << "3. Cari Penulis" << endl;
+        cout << "4. Jumlah Buku per Penulis" << endl;
+        cout << "5. Jumlah Penulis per Buku" << endl;
         cout << "0. Kembali ke Menu Utama" << endl;
         cout << "Pilihan: ";
         cin >> pilihan;
@@ -143,9 +147,23 @@ void menuUser(ListPenulis L){
             }else {
                 cout << "Penulis tersebut " << idPenulis << " tidak ditemukan." << endl;
             }
+        }else if (pilihan == 4) {
+            cout << "Masukkan ID penulis: ";
+            cin >> idPenulis;
+            p = findPenulis_103012400343(L, idPenulis);
+            if (p != nullptr) {
+                cout << "Jumlah buku oleh " << p->info.nama << ": " << countBooksByPenulis_103012400343(p) << " buku." << endl;
+            } else {
+                cout << "Penulis tidak ditemukan." << endl;
+            }
+        } else if (pilihan == 5) {
+            cout << "Masukkan ID buku: ";
+            cin >> idBuku;
+            cout << "Buku " << idBuku << " dikontribusikan oleh: " << countAuthorsByBook_103012400343(L, idBuku) << " penulis." << endl;
         }else if (pilihan == 0){
             cout << "Keluar" << endl;
         }else {
             cout << "Pilihan tidak valid" << endl;
         }
 }
+
