@@ -237,3 +237,35 @@ void deletePenulis_103012400343(ListPenulis &L, string idPenulis) {
         cout << "Penulis dengan ID " << idPenulis << " tidak ditemukan." << endl;
     }
 }
+
+int countBooksByPenulis_103012400343(adrPenulis P) {
+    int jumlah = 0;
+    adrBuku B = P->firstBuku;
+
+    while (B != nullptr) {
+        jumlah++;
+        B = B->next;
+    }
+
+    return jumlah;
+}
+
+int countAuthorsByBook_103012400343(ListPenulis L, string idBuku) {
+    int jumlah = 0;
+
+    adrPenulis P = L.first;
+
+    while (P != nullptr) {
+        adrBuku B = P->firstBuku;
+
+        while (B != nullptr) {
+            if (B->info.id == idBuku) {
+                jumlah++;
+            }
+            B = B->next;
+        }
+        P = P->next;
+    }
+
+    return jumlah;
+}

@@ -10,6 +10,9 @@ typedef struct elemenPenulis* adrPenulis;
 struct Buku{
     string judul;
     string IDbuku;
+    int tahunTerbit;
+    string deskripsi;
+    string tipeBuku;
 };
 
 struct elemenBuku{
@@ -36,7 +39,7 @@ struct ListPenulis{
 void createListPenulis_103012400343(ListPenulis &L);
 adrPenulis createElemenPenulis_103012400343(string id, string nama);
 bool isListPenulisEmpty_103012400343(ListPenulis L);
-adrBuku createElemenBuku_103012400343(string id, string judul);
+adrBuku createElemenBuku_103012400343(string id, string judul, int tahunTerbit , string deskripsi , string tipeBuku);
 void insertLastPenulis_103012400343(ListPenulis &L, adrPenulis P);
 void insertLastBuku_103012400343(adrPenulis P, adrBuku B);
 adrPenulis findPenulis_103012400343(ListPenulis L, string id);
@@ -49,6 +52,8 @@ void editPenulis_103012400343(adrPenulis P, string idBaru, string namaBaru);
 void editBuku_103012400343(adrBuku B, string idBaru, string judulBaru);
 void deleteBukuFromPenulis_103012400343(adrPenulis P, string idBuku);
 void deletePenulis_103012400343(ListPenulis &L, string idPenulis);
+int countBooksByPenulis_103012400343(adrPenulis P);
+int countAuthorsByBook_103012400343(ListPenulis L, string idBuku)
 void insertFirstPenulis(ListPenulis &L, adrPenulis P);
 void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec);
 void deleteFirstPenulis(ListPenulis &L);

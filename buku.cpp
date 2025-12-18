@@ -2,11 +2,14 @@
 #include "header.h"
 using namespace std;
 
-adrBuku createElemenBuku_103012400343(string id, string judul) {
+adrBuku createElemenBuku_103012400343(string id, string judul, int tahunTerbit , string deskripsi , string tipeBuku) {
     adrBuku P;
     P = new elemenBuku;
     P->info.IDbuku = id;
     P->info.judul = judul;
+    P->info.deskripsi = deskripsi;
+    P->info.tahunTerbit = tahunTerbit;
+    P->info.tipeBuku = tipeBuku;
     P->next = nullptr;
     P->prev = nullptr;
 
@@ -133,7 +136,7 @@ void deleteAfterBuku_103012400343(adrPenulis P, string idBukuPrec) {
     cout << "Buku ID " << B->info.IDbuku << " (" << B->info.judul << ") berhasil dihapus dari " << P->info.nama << idBukuPrec << endl;
 }
 
-void deleteLastBuku_103012400343(adrPenulis P) {
+void deleteLastBuku(adrPenulis P) {
     if (P == nullptr) {
         cout << "Error: Penulis tidak valid." << endl;
     }
