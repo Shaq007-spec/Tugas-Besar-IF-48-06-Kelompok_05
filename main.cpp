@@ -12,7 +12,7 @@ int main()
 
     createListPenulis_103012400343(L);
 
-    while (pilihan != 0) {
+    while (pilihan != 0 && pilihan < 3) {
         cout << "=== APLIKASI PERPUSTAKAAN ===" << endl;
         cout << "1. Login sebagai Admin" << endl;
         cout << "2. Login sebagai User" << endl;
@@ -42,7 +42,7 @@ void menuAdmin(ListPenulis &L){
     string deskripsi, tipe;
     adrBuku q;
 
-    while (pilihan != 0){
+    while (pilihan != 0 && pilihan < 8){
         cout << "=== MENU ADMIN ===" << endl;
         cout << "1. Tambah Penulis" << endl;
         cout << "2. Tambah Buku ke Penulis" << endl;
@@ -72,6 +72,12 @@ void menuAdmin(ListPenulis &L){
                 cin >> idBuku;
                 cout << "Masukan Judul Buku: ";
                 cin >> judulBuku;
+                cout << "Masukan Tahun Terbit: ";
+                cin >> tahun;
+                cout << "Masukan Deskripsi: ";
+                cin >> deskripsi;
+                cout << "Masukan Tipe Buku: ";
+                cin >> tipe;
                 q = createElemenBuku_103012400343(idBuku, judulBuku, tahun, deskripsi, tipe);
                 insertLastBuku_103012400343(p, q);
                 cout << "Buku berhasil ditambahkan." << endl;
@@ -141,6 +147,7 @@ void menuUser(ListPenulis L){
         }else if (pilihan == 3){
             cout << "Masukkan penulis yang dicari: ";
             cin >> idPenulis;
+            p = findPenulis_103012400343(L, idPenulis);
             if (p != nullptr){
                 cout << "Penulis ditemukan: " << p->info.nama << endl;
                 showBooksByPenulis_103012400343(p);

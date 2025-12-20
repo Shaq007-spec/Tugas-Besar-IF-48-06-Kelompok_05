@@ -21,7 +21,7 @@ adrPenulis createElemenPenulis_103012400343(string id, string nama) {
     return P;
 }
 
-void insertFirstPenulis(ListPenulis &L, adrPenulis P) {
+void insertFirstPenulis_103012400225(ListPenulis &L, adrPenulis P) {
     if (L.first == nullptr) {
         L.first = P;
     } else {
@@ -30,7 +30,7 @@ void insertFirstPenulis(ListPenulis &L, adrPenulis P) {
     }
 }
 
-void insertAfterPenulis(ListPenulis &L, adrPenulis P, string idPrec) {
+void insertAfterPenulis_103012400225(ListPenulis &L, adrPenulis P, string idPrec) {
     adrPenulis prec = findPenulis_103012400343(L, idPrec);
 
     if (prec != nullptr) {
@@ -93,20 +93,33 @@ void showBooksByPenulis_103012400343(adrPenulis P) {
 void findAuthorsByBook_103012400343(ListPenulis L, string idBuku) {
     bool found;
     adrPenulis P;
+    adrBuku B;
+    B = nullptr;
     found = false;
     P = L.first;
     cout << "Penulis Buku dengan ID " << idBuku << endl;
 
-    while (P != nullptr) {
-        if (findBukuInPenulis_103012400343(P, idBuku) != nullptr) {
-            cout << "ID: " << P->info.id << ", Nama: " << P->info.nama << endl;
+    while (P != nullptr && !found){
+        B = findBukuInPenulis_103012400343(P, idBuku);
+        if (B != nullptr) {
+            cout << "\n=== DETAIL BUKU ===" << endl;
+            cout << "ID Buku   : " << B->info.IDbuku << endl;
+            cout << "Judul Buku: " << B->info.judul << endl;
             found = true;
         }
         P = P->next;
     }
 
-    if (!found) {
-        cout << "Tidak ada penulis yang terhubung dengan buku ID " << idBuku << "." << endl;
+    if (found) {
+        P = L.first;
+        while (P != nullptr){
+            if (findBukuInPenulis_103012400343(P, idBuku) != nullptr) {
+                cout << P->info.nama << " (ID: " << P->info.id << ")" << endl;
+            }
+            P = P->next;
+        }
+    }else {
+        cout << "Buku dengan ID: " << idBuku << " tidak ditemukan." << endl;
     }
 }
 
@@ -153,7 +166,7 @@ void deleteFirstPenulis_103012400343(ListPenulis &L) {
     cout << "Penulis ID " << P->info.id << " (" << P->info.nama << ") berhasil dihapus." << endl;
 }
 
-void deleteAfterPenulis(ListPenulis &L, string idPrec) {
+void deleteAfterPenulis_103012400225(ListPenulis &L, string idPrec) {
     adrPenulis prec = findPenulis_103012400343(L, idPrec);
 
     if (prec == nullptr) {
@@ -178,7 +191,7 @@ void deleteAfterPenulis(ListPenulis &L, string idPrec) {
     cout << "Penulis ID " << P->info.id << " (" << P->info.nama << " )" << idPrec <<endl;
 }
 
-void deleteLastPenulis(ListPenulis &L) {
+void deleteLastPenulis_103012400225(ListPenulis &L) {
     if (L.first == nullptr) {
         cout << "Error: List Penulis kosong." << endl;
     }
